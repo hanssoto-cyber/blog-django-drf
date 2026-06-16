@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{% block title %}Blog.dev{% endblock %}</title>
+</head>
+<body>
+  <nav>
+    <a href="{% url 'articles_list' %}">Artículos</a>
+    <a href="{% url 'authors_list' %}">Autores</a>
+  </nav>
+
+  <main>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="{{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
