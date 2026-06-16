@@ -1,0 +1,27 @@
+{% extends "web/base.html" %}
+{% block title %}Artículos · Blog.dev{% endblock %}
+
+{% block content %}
+  <h1>Artículos</h1>
+
+  {% if error %}
+    <p>{{ error }}</p>
+  {% endif %}
+
+  {% if articles %}
+    {% for a in articles %}
+      <div>
+        <h3>{{ a.title }}</h3>
+        <p>{{ a.content }}</p>
+        <small>
+          Autor: {{ a.author.name }} |
+          Estado: {{ a.status }} |
+          Fecha: {{ a.created_at|slice:":10" }}
+        </small>
+      </div>
+      <hr>
+    {% endfor %}
+  {% else %}
+    <p>No hay artículos aún. <a href="{% url 'article_create' %}">Crea el primero.</a></p>
+  {% endif %}
+{% endblock %}

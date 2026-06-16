@@ -1,0 +1,23 @@
+{% extends "web/base.html" %}
+{% block title %}Autores · Blog.dev{% endblock %}
+
+{% block content %}
+  <h1>Autores</h1>
+
+  {% if error %}
+    <p>{{ error }}</p>
+  {% endif %}
+
+  {% if authors %}
+    {% for a in authors %}
+      <div>
+        <h3>{{ a.name }}</h3>
+        <p>{{ a.email }}</p>
+        {% if a.bio %}<p>{{ a.bio }}</p>{% endif %}
+      </div>
+      <hr>
+    {% endfor %}
+  {% else %}
+    <p>No hay autores. <a href="{% url 'author_create' %}">Crea el primero.</a></p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "web/base.html" %}
+{% block title %}Nuevo Artículo · Blog.dev{% endblock %}
+
+{% block content %}
+  <h1>Nuevo Artículo</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Crear Artículo</button>
+  </form>
+{% endblock %}
